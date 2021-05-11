@@ -13,11 +13,9 @@ namespace ConsoleUI
 
             foreach (var item in productManager.GetAll())
             {
-                Console.WriteLine(item.ProductName);
+                Console.WriteLine(item.ProductName +" - "+item.Barcode);
             }
 
-
-           
         }
     }
 }

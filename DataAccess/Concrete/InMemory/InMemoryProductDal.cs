@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete
@@ -14,13 +15,16 @@ namespace DataAccess.Concrete
 
         public InMemoryProductDal()
         {
-            //Oracle,Sql Server ,MongoDb,Postgres
-            _products = new List<Product> {
+            //Without Oracle,Sql Server ,MongoDb,Postgres 
 
-                new Product{ProductId=1 , CategoryId=1,ProductName="Bardak",UnitPrice=15,UnitsInStock=15},
-                new Product{ProductId=2 , CategoryId=3,ProductName="Çatal",UnitPrice=500,UnitsInStock=30},
-                new Product{ProductId=3 , CategoryId=2,ProductName="Telefon",UnitPrice=1500,UnitsInStock=55},
-            };
+            var barcodes = System.IO.File.ReadAllLines(@"C:\Users\NurselAltın\Desktop\Nursel\projects\project\MyFinalProject\DataAccess\Utilities\NoktaUpdatedPicture.txt");
+            _products = barcodes.Select(s => new Product
+            {
+                ProductName = s.Split(':')[0].Trim(),
+                Barcode = s.Split(':')[1].Trim()
+            }).ToList();
+
+
         }
 
         public void Add(Product product)
@@ -33,9 +37,19 @@ namespace DataAccess.Concrete
             _products.Remove(_products.SingleOrDefault(p => p.ProductId == product.ProductId));
         }
 
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetAll()
         {
             return _products;
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAllByCategory(int categoryıd)
@@ -50,7 +64,6 @@ namespace DataAccess.Concrete
             pUpdate.CategoryId = product.CategoryId;
             pUpdate.UnitPrice = product.UnitPrice;
             pUpdate.UnitsInStock = product.UnitsInStock;
-
 
         }
     }

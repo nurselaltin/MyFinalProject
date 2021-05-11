@@ -5,9 +5,7 @@ using System.Text;
 
 namespace DataAccess.Abstarct
 {
-    public interface  ICategoryDal:IEntityRepository<Category>
+    public interface ICustomerDal:IEntityRepository<Customer>
     {
-
-
     }
 }
