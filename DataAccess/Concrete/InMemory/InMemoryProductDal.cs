@@ -21,7 +21,7 @@ namespace DataAccess.Concrete
             _products = barcodes.Select(s => new Product
             {
                 ProductName = s.Split(':')[0].Trim(),
-                Barcode = s.Split(':')[1].Trim()
+             
             }).ToList();
 
 

@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Entities.Abstarct;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Abstarct
 {
-    public interface IEntityRepository<T>
+    //generic constraint
+    //class:referans tipi olablir.
+    //IEntity:Kendisi ve implement olduğu sınıflar olabilir
+    //new():soyut bir nesne olamaz, somut bir nesne olmalıdır.
+    public interface IEntityRepository<T>where T:class,IEntity,new()
     {
 
         //Filtreleme işlemleri için Expression yapısını kullanırız
