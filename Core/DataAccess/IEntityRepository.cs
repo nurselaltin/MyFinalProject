@@ -1,33 +1,26 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using Core.Entities;
 
 namespace Core.DataAccess
 {
-
-    /*T  sınırlandırma : Generic Constraint
-     * - Class yazılabilsin
-     * - Sadece Entties katmanındaki sınıflar yazılabilsin istiyoruz.Onlarında ortak noktası IEntity
-     * - IEntity newlemez.Böylelikle Sadece Entities sınıfları yazılabilir hale geldi yapımız.
-     
-    
-     
-     */
-    public interface IEntityRepository<T> where T:class,IEntity,new()
+    //generic constraint
+    //class:referans tipi olablir.
+    //IEntity:Kendisi ve implement olduğu sınıflar olabilir
+    //new():soyut bir nesne olamaz, somut bir nesne olmalıdır.
+    public interface IEntityRepository<T>where T:class,IEntity,new()
     {
 
-        //Filtreleyerek listele
-        //Linq ile gelen Expression  ifadesi
-        //_productDal.GetAll(p=>p.ıd);  sağlar
+        //Filtreleme işlemleri için Expression yapısını kullanırız
         List<T> GetAll(Expression<Func<T,bool>> filter=null);
-        T Get(Expression<Func<T,bool>> filter);
 
+        T Get(Expression<Func<T, bool>> filter);
+        //-------------------------------------------
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
-    
 
 
     }
