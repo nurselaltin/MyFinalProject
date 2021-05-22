@@ -14,14 +14,20 @@ namespace ConsoleUI
 
         static void Main(string[] args)
         {
+             ProductTest();
 
+             
+
+        }
+
+        private static void ProductTest()
+        {
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            foreach (var item in productManager.GetByUnitPrice(234 , 567))
+            foreach (var item in productManager.GetProductDetails())
             {
-                Console.WriteLine(item.ProductName );
+                Console.WriteLine(item.ProductName+"/"+item.CategoryName);
             }
-
         }
     }
 }
