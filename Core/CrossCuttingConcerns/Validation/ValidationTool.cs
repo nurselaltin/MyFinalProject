@@ -9,7 +9,7 @@ namespace Core.CrossCuttingConcerns.Validation
     {
         public static void Validate(IValidator validator, object entity)
         {
-
+            //IValidator :Business > ValidationRules
             //object : Entity , Dtos ....
 
             var context = new ValidationContext<object>(entity);

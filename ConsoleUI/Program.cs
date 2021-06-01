@@ -22,21 +22,21 @@ namespace ConsoleUI
 
         private static void ProductTest()
         {
-            ProductManager productManager = new ProductManager(new EfProductDal());
+            //ProductManager productManager = new ProductManager(new EfProductDal());
 
-            var result = productManager.GetProductDetails();
+            //var result = productManager.GetProductDetails();
 
-            if(result.Success == true)
-            {
-                foreach (var item in result.Data)
-                {
-                    Console.WriteLine(item.ProductName + "/" + item.CategoryName + " /" + item.ProductId);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+            //if(result.Success == true)
+            //{
+            //    foreach (var item in result.Data)
+            //    {
+            //        Console.WriteLine(item.ProductName + "/" + item.CategoryName + " /" + item.ProductId);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine(result.Message);
+            //}
 
           
         }
