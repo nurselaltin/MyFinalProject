@@ -8,3 +8,6 @@ It is a project created to learn how to make a corporate project in accordance w
  - SOLID principles
  - Repository Pattern
  - WebAPI
+ - Jason Web Token
+ - AOP Technic
+
